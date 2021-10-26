@@ -10,9 +10,7 @@ fn main(){
     io::stdin().read_line(&mut option).expect("Reading option fail!!!");
     let option : i32 = option.trim().parse().expect("Enter option not a number!");
     match option{
-        1=>{
-            println!("You enter 1");
-        },
+        1=> converterDeg(),
         2=>{
             println!("You enter 2");
         },
@@ -26,12 +24,6 @@ fn main(){
     }
 }
 
-// fn 
-
-// fn CtoF(c: &str){
-
-// }
-
-// fn FtoC(c: &str){
-
-// }
+fn converterDeg(){
+    println!("Hi!");
+}
