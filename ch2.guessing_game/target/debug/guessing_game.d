@@ -1,0 +1,1 @@
+\\svr-dc1\users$\jiande.li\Desktop\git_file\Rust_study\Rust_Study\guessing_game\target\debug\guessing_game.exe: \\svr-dc1\users$\jiande.li\Desktop\git_file\Rust_study\Rust_Study\guessing_game\src\main.rs
