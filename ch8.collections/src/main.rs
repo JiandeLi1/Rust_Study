@@ -5,6 +5,11 @@ fn main(){
     println!("Mean {}", mean(&v));
     println!("Median {}", median(&v));
     println!("Mode {}", mode(&v));
+
+    println!("{}",pig_latin(&String::from("first")));
+    println!("{}",pig_latin(&String::from("apple")));
+
+    
 }
 
 fn mean(v: &Vec<i32>)->i32{
@@ -39,6 +44,18 @@ fn mode(v: &Vec<i32>)->i32{
             mode_position=v[*key as usize];
         }
     }
-    
     mode_position
+}
+
+fn pig_latin(s : &String)->String{
+    let mut word = s.chars();
+    let first = word.next().unwrap();//&str
+    let mut res = String::new();
+    match first{
+        'a' | 'e' | 'i' | 'o' | 'u' |
+        'A' | 'E' | 'I' | 'O' | 'U' => 
+            res=format!("{}-hay",s as &str),
+        _=> res=format!("{}-{}ay",&s[1..],first),
+    }
+    res
 }
