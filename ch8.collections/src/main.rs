@@ -1,51 +1,44 @@
-#![allow(unused)]
+
+use std::collections::HashMap;
 fn main(){
-    use std::collections::HashMap;
-    let mut scores = HashMap::new();
+    let v =vec![1,1,2,3,4,5,6];
+    println!("Mean {}", mean(&v));
+    println!("Median {}", median(&v));
+    println!("Mode {}", mode(&v));
+}
 
-    scores.insert(String::from("Blue"),10);
-    scores.insert(String::from("Red"),50);
-
-    //The way to make the hashmap by my self
-    let teams = vec![String::from("Blue"), String::from("Red")];
-    let initial_scores = vec![10, 50];
-    let scores2: HashMap<_, _> = teams.iter().zip(initial_scores.iter()).collect();
-    let t1 = String::from("Blue"); 
-    let t2 = String::from("Red");
-    let s1=scores.get(&t1);
-    let s2 =scores2.get(&t1);
-    let s3=scores.get(&t2);
-    let s4=scores2.get(&t2);
-    //hashMap returns Option
-    println!("{:?}",s1);
-    println!("{:?}",s2);
-    println!("{:?}",s3);
-    println!("{:?}",s4);
-
-    //iterating the hashmap (The order is random)
-    for (key, value) in &scores {
-        println!("{}: {}", key, value);
+fn mean(v: &Vec<i32>)->i32{
+    let mut ave=0;
+    let len= v.len();
+    for i in v{
+        ave+=i;
     }
+    ave/len as i32
+}
 
-    //Updating a Hash map
-    scores.insert(String::from("Blue"), 25);
-    println!("{:?}", scores);
-
-    //Only inserting a Value if the key has no value
-    scores.entry(String::from("Blue")).or_insert(50);
-    scores.entry(String::from("Yellow")).or_insert(60);
-    scores.insert(String::from("Blue"), 25);
-    println!("{:?}", scores);
-
-    //Updating a Value Based on the Old Value
-    let text = "hello world wonderful world!";
-
-    for word in text.split_whitespace(){
-        let count = map.entry(word).or_insert(0);// or_insert method actually returns a mutable reference (&mut v) to the value for this key
-        *count+=1;
-        //Here we store that mutable refernce in the count variable, 
-        //so in order to assign to that value,
-        //we must first dereference count using * goes out of scope at the end of the for loop
+fn median(v: &Vec<i32>)->f64{
+    let len= v.len();
+    let mut m=0.0;
+    match len%2{
+        0=> m=(v[len/2-1] as f64+(v[len/2]) as f64)/2.0,
+        _=> m=v[len/2] as f64,
     }
+    m
+}
 
+fn mode(v: &Vec<i32>)->i32{
+    let mut m : HashMap<i32, i32> = HashMap::new();
+    for i in v{
+        let count = m.entry(*i).or_insert(0);
+        *count += 1;
+    }
+    let mut mode_position=0;
+    let mut max = 0; 
+    for (value, key) in &m{
+        if value > &max {
+            mode_position=v[*key as usize];
+        }
+    }
+    
+    mode_position
 }
