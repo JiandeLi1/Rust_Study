@@ -1,33 +1,36 @@
-#![allow(unused)]
 fn main(){
-    pub trait Summary {
-        fn summarize(&self)->String;
+    {
+        let r;
+        // {
+        //     let x=5;
+        //     r=&x;
+        // }//x will goes here, can't print in later
+
+        let x=5;
+        r=&x;//This is work
+        println!("r: {}", r);
     }
 
-    pub struct NewArticle {
-        pub headline: String,
-        pub location: String,
-        pub author: String,
-        pub content: String,
-    }
-    
-    impl Summary for NewArticle {
-        fn summarize(&self) -> String {
-            format!("{}, by {} ({})", self.headline, self.author, self.location)
-        }
-    }
 
-    pub struct Tweet {
-        pub username:String,
-        pub content: String,
-        pub reply:bool,
-        pub retweet: bool,
-    }
+    let s1 = String::from("abcd");
+    let s2 = "xyz";
 
-    impl Summary for Tweet {
-        fn summarize(&self)->String{
-            format!("{}: {}", self.username, self.content)
-        }
-    }
+    let result = longest(s1.as_str(), s2);
+    println!("The longest string is {}", result);
 }
 
+// fn longest(x: &str, y:&str)-> &str{
+//     if x.len() > y.len(){
+//         x
+//     }else{
+//         y
+//     }
+// }// not work because Rust doesn't know the lifttime for parameter
+
+fn longest<'a>(x: &'a str, y: &'a str)->&'a str {
+    if x.len() > y.len(){
+        x
+    }else{
+        y
+    }
+}
