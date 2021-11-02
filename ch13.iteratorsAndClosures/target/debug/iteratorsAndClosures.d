@@ -1,0 +1,1 @@
+\\svr-dc1\users$\jiande.li\Desktop\git_file\Rust_study\Rust_Study\ch13.iteratorsAndClosures\target\debug\iteratorsAndClosures.exe: \\svr-dc1\users$\jiande.li\Desktop\git_file\Rust_study\Rust_Study\ch13.iteratorsAndClosures\src\lib.rs \\svr-dc1\users$\jiande.li\Desktop\git_file\Rust_study\Rust_Study\ch13.iteratorsAndClosures\src\main.rs

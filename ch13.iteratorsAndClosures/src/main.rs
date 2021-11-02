@@ -1,10 +1,5 @@
-#![allow(unused)]
-fn main() {
-    use std::thread;
-    use std::time::Duration;
-    fn simulated_expensive_calculation(intensity: u32)->u32{
-        println!("calculating slowly...");
-        thread::sleep(Duration::fron_secs(2));
-        intensity
-    }
+fn main(){
+    let v1: Vec<i32> = vec![1,2,3];
+    let v2:Vec<_>=v1.iter().map(|x| x+1).collect();//map is lazy, we need collect to make all together.
+    assert_eq!(v2, vec![2,3,4]);
 }
